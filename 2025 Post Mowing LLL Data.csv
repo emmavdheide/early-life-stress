@@ -1,0 +1,97 @@
+Row,Group,Plant,Treatment,Post Mow LLL
+5,1,1,Early Mow/Late Mow,17
+5,1,2,Control,
+5,1,3,Late Mow,16
+5,1,4,Rosette Damage/Early Mow/Late Mow,14
+5,5,1,Rosette Damage/Early Mow/Late Mow,21
+5,5,2,Rosette Damage/Late Mow,11
+5,5,3,Early Mow,30
+5,5,4,Control,
+6,4,1,Late Mow,31
+6,4,2,Rosette Damage,
+6,4,3,Rosette Damage/Early Mow,13
+6,4,4,Early Mow/Late Mow,39
+6,6,1,Control,
+6,6,2,Rosette Damage/Late Mow,19
+6,6,3,Late Mow,37
+6,6,4,Rosette Damage/Early Mow,14
+7,1,1,Rosette Damage/Late Mow,20
+7,1,2,Early Mow,40
+7,1,3,Rosette Damage/Early Mow,11
+7,1,4,Rosette Damage,
+7,5,1,Rosette Damage,
+7,5,2,Rosette Damage/Early Mow/Late Mow,19
+7,5,3,Early Mow,40
+7,5,4,Early Mow/Late Mow,27
+8,6,1,Control,
+8,6,2,Late Mow,46
+8,6,3,Rosette Damage/Early Mow/Late Mow,16
+8,6,4,Rosette Damage/Early Mow,12
+8,8,1,Early Mow,43
+8,8,2,Rosette Damage/Late Mow,5
+8,8,3,Early Mow/Late Mow,24
+8,8,4,Rosette Damage,
+9,1,1,Early Mow,23
+9,1,2,Rosette Damage,
+9,1,3,Rosette Damage/Late Mow,0
+9,1,4,Control,
+9,3,1,Rosette Damage/Early Mow/Late Mow,27
+9,3,2,Rosette Damage/Early Mow,14
+9,3,3,Early Mow,39
+9,3,4,Late Mow,33
+9,5,1,Rosette Damage/Early Mow,16
+9,5,2,Control,
+9,5,3,Late Mow,26
+9,5,4,Rosette Damage/Late Mow,9
+9,7,1,Rosette Damage,
+9,7,2,Control,
+9,7,3,Early Mow/Late Mow,30
+9,7,4,Rosette Damage/Early Mow/Late Mow,11
+10,2,1,Rosette Damage/Early Mow/Late Mow,13
+10,2,2,Rosette Damage/Early Mow,17
+10,2,3,Late Mow,26
+10,2,4,Early Mow/Late Mow,34
+10,4,1,Rosette Damage,
+10,4,2,Control,
+10,4,3,Early Mow/Late Mow,15
+10,4,4,Rosette Damage/Late Mow,0
+10,6,1,Early Mow/Late Mow,28
+10,6,2,Early Mow,31
+10,6,3,Rosette Damage,
+10,6,4,Rosette Damage/Early Mow/Late Mow,0
+10,8,1,Early Mow,28
+10,8,2,Rosette Damage/Late Mow,12
+10,8,3,Rosette Damage/Early Mow,12
+10,8,4,Late Mow,31
+11,1,1,Early Mow/Late Mow,25
+11,1,2,Rosette Damage/Early Mow,24
+11,1,3,Rosette Damage/Late Mow,0
+11,1,4,Early Mow,26
+11,3,1,Control,
+11,3,2,Rosette Damage/Early Mow/Late Mow,17
+11,3,3,Late Mow,18
+11,3,4,Rosette Damage,
+11,5,1,Control,
+11,5,2,Rosette Damage/Early Mow/Late Mow,16
+11,5,3,Rosette Damage/Late Mow,15
+11,5,4,Late Mow,32
+11,7,1,Early Mow/Late Mow,24
+11,7,2,Late Mow,29
+11,7,3,Rosette Damage/Early Mow,17
+11,7,4,Rosette Damage/Early Mow/Late Mow,17
+12,2,1,Control,
+12,2,2,Rosette Damage/Early Mow/Late Mow,26
+12,2,3,Late Mow,38
+12,2,4,Rosette Damage,
+12,4,1,Rosette Damage/Late Mow,27
+12,4,2,Early Mow/Late Mow,36
+12,4,3,Rosette Damage/Early Mow,15
+12,4,4,Early Mow,33
+12,6,1,Rosette Damage,
+12,6,2,Rosette Damage/Early Mow,19
+12,6,3,Early Mow,32
+12,6,4,Early Mow/Late Mow,19
+12,8,1,Control,
+12,8,2,Rosette Damage/Late Mow,20
+12,8,3,Early Mow,41
+12,8,4,Rosette Damage,

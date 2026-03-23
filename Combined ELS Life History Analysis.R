@@ -792,11 +792,11 @@ CapDist_combinedPlot<-
     panel.background = element_blank(), 
     panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)
   ) +
-  labs(title = "Flower Head Size Distribution", x = "Treatment", y = "Flower Head Size (cm)")+
-  ylim(0,6) + 
+  labs(title = "Capitulum Size Distribution", x = "Treatment", y = "Flower Head Size (cm)")+
+  ylim(0,5) + 
   geom_text(
     data = CapSize_combined,
-    aes(x = Trt, y = 5, label = .group),
+    aes(x = Trt, y = 4.7, label = .group),
     vjust = 0,
     size = 7
   )

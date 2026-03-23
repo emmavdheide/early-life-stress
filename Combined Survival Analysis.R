@@ -83,7 +83,8 @@ ToDPlot_combined<-survdat_combined %>%
     legend.position="none",panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)) +
   ggtitle("Time of Death") +
   xlab("Treatment")+
-  ylab("Time of Death (day of experiment)")
+  ylab("Time of Death (day of experiment)")+
+  ylim(30,110)
 ToDPlot_combined
 
 ##2025####
@@ -101,7 +102,8 @@ ToDPlot2025<-survdat2025 %>%
     legend.position="none",panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)) +
   ggtitle("Time of Death (2025)") +
   xlab("Treatment")+
-  ylab("Time of Death (day of experiment)")
+  ylab("Time of Death (day of experiment)")+
+  ylim(35,NA)
 ToDPlot2025
 
 ##2024####
@@ -119,7 +121,8 @@ ToDPlot2024<-survdat2024 %>%
     legend.position="none",panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)) +
   ggtitle("Time of Death (2024)") +
   xlab("Treatment")+
-  ylab("Time of Death (day of experiment)")
+  ylab("Time of Death (day of experiment)")+
+  ylim(30, NA)
 ToDPlot2024
 
 #Survival Regressions and Curves####
@@ -205,7 +208,7 @@ cld_combined
 
 #Add these letters to the earlier ToDPlot
 ToDPlot_combined+
-  geom_text(data = cld_combined, aes(x=TreatmentAbb, y=45, label = .group), size = 7, color = "black")
+  geom_text(data = cld_combined, aes(x=TreatmentAbb, y=35, label = .group), size = 7, color = "black")
 
 ##2025####
 #To figure out which treatments affected survival, we will fit parametric survival regressions with different hazard models and compare with AIC
@@ -242,7 +245,7 @@ cld_2025
 
 #Add these letters to the earlier ToDPlot
 ToDPlot2025+
-  geom_text(data = cld_2025, aes(x=TreatmentAbb, y=55, label = .group), size = 7, color = "black")
+  geom_text(data = cld_2025, aes(x=TreatmentAbb, y=40, label = .group), size = 7, color = "black")
 
 ##2024####
 #To figure out which treatments affected survival, we will fit parametric survival regressions with different hazard models and compare with AIC
@@ -280,7 +283,7 @@ cld_2024
 
 #Add these letters to the earlier ToDPlot
 ToDPlot2024+
-  geom_text(data = cld_2024, aes(x=TreatmentAbb, y=43, label = .group), size = 7, color = "black")
+  geom_text(data = cld_2024, aes(x=TreatmentAbb, y=35, label = .group), size = 7, color = "black")
 
 #Cox Proportional Hazards Model (non-parametric)####
 #We compare our above results to a non-parametric approach

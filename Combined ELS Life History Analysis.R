@@ -124,7 +124,7 @@ FlDate2025Plot<-ggplot(FlDate2025,aes(y=emmean, x=Treatment))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
   theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Flowering Date (Day of Experiment)")+
-  geom_text(aes(label = .group, y = upper.CL + 5), #+ number specifies how high the cld appears
+  geom_text(aes(label = .group, y = upper.CL + 5), size=7, #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75))+
   #theme(axis.text.x = element_text(angle = 45, hjust = 1))+ #angle text 45 degrees
   ylim(0,90)+
@@ -168,7 +168,7 @@ FlDate2024Plot<-ggplot(FlDate2024,aes(y=emmean, x=Treatment))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
   theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Flowering Date (Day of Experiment)")+
-  geom_text(aes(label = .group, y = upper.CL + 5), #+ number specifies how high the cld appears
+  geom_text(aes(label = .group, y = upper.CL + 5), size=7, #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75))+
   ylim(0,90)+
   ggtitle("Average date of first flowering (2024)")+

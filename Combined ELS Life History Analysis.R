@@ -599,7 +599,7 @@ MaxHt2024Plot
 #Number of Stems####
 ##Combined####
 #fit model and summarize
-fitNS_combined<-glmmTMB(NoStemsFinal~RosDam*EarlyMow*LateMow+NoStemsSpring+(1|Year/Block), data=dat_combined, family="poisson")
+fitNS_combined<-glmmTMB(NoStemsFinal~RosDam*EarlyMow*LateMow+NoStemsSpring+LLLSpring+(1|Year/Block), data=dat_combined, family="poisson")
 summary(fitNS_combined)
 
 #check residuals
@@ -645,7 +645,7 @@ NoStems_combinedPlot
 
 ##2025####
 #fit model and summarize
-fitNS2025<-glmmTMB(NoStemsFinal~RosDam*EarlyMow*LateMow+NoStemsApr30+(1|Block), data=dat_2025, family="poisson")
+fitNS2025<-glmmTMB(NoStemsFinal~RosDam*EarlyMow*LateMow+NoStemsApr30+LLLApr30+(1|Block), data=dat_2025, family="poisson")
 summary(fitNS2025)
 
 #check residuals
@@ -691,7 +691,7 @@ NoStems2025Plot
 
 ##2024####
 #fit model and summarize
-fitNS2024<-glmmTMB(NoStemsFinal~RosDam*EarlyMow*LateMow+NoStemsMay2+(1|Block), data=dat_2024, family="poisson")
+fitNS2024<-glmmTMB(NoStemsFinal~RosDam*EarlyMow*LateMow+NoStemsMay2+LLLMay2+(1|Block), data=dat_2024, family="poisson")
 summary(fitNS2024)
 
 #check residuals
@@ -792,7 +792,7 @@ CapDist_combinedPlot<-
     panel.background = element_blank(), 
     panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)
   ) +
-  labs(title = "Capitulum Size Distribution", x = "Treatment", y = "Flower Head Size (cm)")+
+  labs(title = "Capitulum Size Distribution", x = "Treatment", y = "Capitulum Size (cm)")+
   ylim(0,5) + 
   geom_text(
     data = CapSize_combined,
@@ -858,9 +858,10 @@ CapDist2025Plot<-
     panel.background = element_blank(), 
     panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)
   ) +
-  labs(title = "Capitulum Size Distribution (2025)", x = "Treatment", y = "Flower Head Size (cm)")
+  ylim(0, 4.3)+
+  labs(title = "Capitulum Size Distribution (2025)", x = "Treatment", y = "Capitulum Size (cm)")
 CapDist2025Plot+
-  geom_text(data=cldDat2025, aes(x=Trt, y=4, label = Letter), size = 8, color = "black")
+  geom_text(data=cldDat2025, aes(x=Trt, y=4.2, label = Letter), size = 8, color = "black")
 
 ##2024####
 #load data
@@ -918,7 +919,8 @@ CapDist2024Plot<-
     panel.background = element_blank(), 
     panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)
   ) +
-  labs(title = "Capitulum Size Distribution (2024)", x = "Treatment", y = "Flower Head Size (cm)")
+  ylim(0, 4.5)+
+  labs(title = "Capitulum Size Distribution (2024)", x = "Treatment", y = "Capitulum Size (cm)")
 #Show plot and add letters
 CapDist2024Plot+
-  geom_text(data=cldDat2024, aes(x=Trt, y=4, label = Letter), size = 8, color = "black")
+  geom_text(data=cldDat2024, aes(x=Trt, y=4.2, label = Letter), size = 8, color = "black")

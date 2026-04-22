@@ -12,6 +12,7 @@ library(multcomp)
 library(ggpattern)
 library(FSA)
 library(rcompanion)
+library(svglite)
 
 #Load Data####
 #And make data types as desired
@@ -36,6 +37,9 @@ dat_2024$Treatment <- as.factor(dat_2024$Treatment)
 dat_2024$RosDam <- as.factor(dat_2024$RosDam)
 dat_2024$EarlyMow <- as.factor(dat_2024$EarlyMow)
 dat_2024$LateMow <- as.factor(dat_2024$LateMow)
+
+#get pixel dimensions I want to use for graphics export
+dims<-dev.size("px") 
 
 #Flowering Date####
 #Analysis of date of first flowering (day # = day of the experiment) 
@@ -76,17 +80,25 @@ FlDate_combinedPlot<-ggplot(FlDate_combined,aes(y=emmean, x=Treatment))+
                    pattern_spacing = 0.05,
                    pattern_angle = 45,
                    pattern_key_scale_factor = 0.6)+
+  coord_flip()+
+  scale_x_discrete(limits = rev) +
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
-  labs(x="Treatment", y="Flowering Date (Day of Experiment)")+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.x = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  labs(x="Treatment", y="Day of Experiment")+
   geom_text(aes(label = .group, y = upper.CL + 5), #+ number specifies how high the cld appears
-            position = position_dodge(width = 0.75))+
-  #theme(axis.text.x = element_text(angle = 45, hjust = 1))+ #angle text 45 degrees
+            position = position_dodge(width = 0.75), size=7)+
   ylim(0,90)+
-  ggtitle("Average date of first flowering")+
+  ggtitle("Flowering Date")+
   geom_errorbar(aes(x=Treatment, ymin=lower.CL, ymax=upper.CL))
 FlDate_combinedPlot
+
+#ggsave("ELS Figure 5.svg",
+    #plot=FlDate_combinedPlot,
+    #width=dims[1],
+    #height=dims[2],
+    #units="px",
+    #dpi=72)
 
 ##2025####
 #fit model and summarize
@@ -120,17 +132,26 @@ FlDate2025<-mutate(FlDate2025, Treatment=case_when(
 FlDate2025Plot<-ggplot(FlDate2025,aes(y=emmean, x=Treatment))+
   geom_bar_pattern(stat = "identity", aes(fill=Treatment, pattern=Treatment), pattern_fill="black",
                    pattern_density=0.05, pattern_spacing=0.05, pattern_angle=45, pattern_key_scale_factor=0.6)+
+  coord_flip()+
+  scale_x_discrete(limits = rev) +
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
-  labs(x="Treatment", y="Flowering Date (Day of Experiment)")+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.x = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  labs(x="Treatment", y="Day of Experiment")+
   geom_text(aes(label = .group, y = upper.CL + 5), size=7, #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75))+
   #theme(axis.text.x = element_text(angle = 45, hjust = 1))+ #angle text 45 degrees
   ylim(0,90)+
-  ggtitle("Average date of first flowering (2025)")+
+  ggtitle("Flowering Date (2025)")+
   geom_errorbar(aes(x=Treatment, ymin=lower.CL, ymax=upper.CL))
 FlDate2025Plot
+
+#ggsave("ELS Figure S52025.svg",
+       #plot=FlDate2025Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2024####
 #fit model and summarize
@@ -164,16 +185,25 @@ FlDate2024<-mutate(FlDate2024, Treatment=case_when(
 FlDate2024Plot<-ggplot(FlDate2024,aes(y=emmean, x=Treatment))+
   geom_bar_pattern(stat = "identity", aes(fill=Treatment, pattern=Treatment), pattern_fill="black",
                    pattern_density=0.05, pattern_spacing=0.05, pattern_angle=45, pattern_key_scale_factor=0.6)+
+  coord_flip()+
+  scale_x_discrete(limits = rev) +
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
-  labs(x="Treatment", y="Flowering Date (Day of Experiment)")+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.x = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  labs(x="Treatment", y="Day of Experiment")+
   geom_text(aes(label = .group, y = upper.CL + 5), size=7, #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75))+
   ylim(0,90)+
-  ggtitle("Average date of first flowering (2024)")+
+  ggtitle("Flowering Date (2024)")+
   geom_errorbar(aes(x=Treatment, ymin=lower.CL, ymax=upper.CL))
 FlDate2024Plot
+
+#ggsave("ELS Figure S52024.svg",
+       #plot=FlDate2024Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 #Capitulum Production####
 #This is the maximum number of capitula + buds ever present on the plant post-treatment
@@ -219,14 +249,21 @@ Cap_combinedPlot<-ggplot(Cap_combined,aes(y=response, Treatment))+
                    pattern_key_scale_factor = 0.6)+ 
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
-  labs(x="Treatment", y="Capitula Production")+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  labs(x="Treatment", y="Capitulum Production")+
   geom_text(aes(label = .group, y = asymp.UCL + 5), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
   ylim(0, 35)+
   ggtitle("Maximum Number of Capitula Present on Plant")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 Cap_combinedPlot
+
+#ggsave("ELS Figure 2.svg",
+       #plot=Cap_combinedPlot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2025####
 #fit model and summarize
@@ -264,15 +301,22 @@ Cap2025Plot<-ggplot(Cap2025,aes(y=response, Treatment))+
                    pattern_spacing=0.05, pattern_angle=45, pattern_key_scale_factor=0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), 
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), 
         axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
-  labs(x="Treatment", y="Capitulum Production")+
+  labs(x="Treatment", y="No. Capitula")+
   geom_text(aes(label = .group, y = asymp.UCL + 5), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
   ylim(0, 50)+
   ggtitle("Capitulum Production (2025)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 Cap2025Plot
+
+#ggsave("ELS Figure S22025.svg",
+       #plot=Cap2025Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2024####
 #fit model and summarize
@@ -308,14 +352,21 @@ Cap2024Plot<-ggplot(Cap2024,aes(y=response, Treatment))+
                    pattern_density = 0.05, pattern_spacing = 0.05, pattern_angle = 45, pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
-  labs(x="Treatment", y="# of Flower Heads")+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  labs(x="Treatment", y="No. Capitula")+
   geom_text(aes(label = .group, y = asymp.UCL + 3), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
   ylim(0, 20)+
   ggtitle("Capitulum Production (2024)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL), size=1)
 Cap2024Plot
+
+#ggsave("ELS Figure S22024.svg",
+    #plot=Cap2024Plot,
+    #width=dims[1],
+    #height=dims[2],
+    #units="px",
+    #dpi=72)
 
 #Height at Flowering####
 ##Combined####
@@ -355,7 +406,7 @@ FlHt_combinedPlot<-ggplot(FlHt_combined,aes(y=response, Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none",panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Height at Flowering (cm)")+
   geom_text(aes(label = .group, y = asymp.UCL + 10), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -363,6 +414,13 @@ FlHt_combinedPlot<-ggplot(FlHt_combined,aes(y=response, Treatment))+
   ggtitle("Height at Flowering")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL), size=1)
 FlHt_combinedPlot
+
+#ggsave("ELS Figure 4.svg",
+       #plot=FlHt_combinedPlot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2025####
 #fit model and summarize results
@@ -400,7 +458,7 @@ FlHt2025Plot<-ggplot(FlHt2025,aes(y=response, Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Height at Flowering (cm)")+
   geom_text(aes(label = .group, y = asymp.UCL + 10), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -408,6 +466,13 @@ FlHt2025Plot<-ggplot(FlHt2025,aes(y=response, Treatment))+
   ggtitle("Height at Flowering (2025)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL), size=1)
 FlHt2025Plot
+
+#ggsave("ELS Figure S42025.svg",
+       #plot=FlHt2025Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2024####
 #fit model and summarize results
@@ -446,7 +511,7 @@ FlHt2024Plot<-ggplot(FlHt2024,aes(y=response, Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Height at Flowering (cm)")+
   geom_text(aes(label = .group, y = asymp.UCL + 10), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -454,6 +519,13 @@ FlHt2024Plot<-ggplot(FlHt2024,aes(y=response, Treatment))+
   ggtitle("Height at Flowering (2024)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL), size=1)
 FlHt2024Plot
+
+#ggsave("ELS Figure S42024.svg",
+       #plot=FlHt2024Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 #Maximum Height####
 #This is maximum post-treatment height (after all physical damages had been applied).
@@ -790,17 +862,20 @@ CapDist_combinedPlot<-
   theme(
     legend.position="none",
     panel.background = element_blank(), 
-    panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)
-  ) +
+    panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30)) +
   labs(title = "Capitulum Size Distribution", x = "Treatment", y = "Capitulum Size (cm)")+
   ylim(0,5) + 
   geom_text(
     data = CapSize_combined,
-    aes(x = Trt, y = 4.7, label = .group),
-    vjust = 0,
-    size = 7
-  )
+    aes(x = Trt, y = 4.7, label = .group), vjust = 0, size = 7)
 CapDist_combinedPlot
+
+#ggsave("ELS Figure 3.svg",
+    #plot=CapDist_combinedPlot,
+    #width=dims[1],
+    #height=dims[2],
+    #units="px",
+    #dpi=72)
 
 ##2025####
 #load data
@@ -860,8 +935,15 @@ CapDist2025Plot<-
   ) +
   ylim(0, 4.3)+
   labs(title = "Capitulum Size Distribution (2025)", x = "Treatment", y = "Capitulum Size (cm)")
-CapDist2025Plot+
-  geom_text(data=cldDat2025, aes(x=Trt, y=4.2, label = Letter), size = 8, color = "black")
+CapDist2025Plot<-CapDist2025Plot+
+  geom_text(data=cldDat2025, aes(x=Trt, y=4.2, label = Letter), size = 7, color = "black")
+
+#ggsave("ELS Figure S32025.svg",
+       #plot=CapDist2025Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2024####
 #load data
@@ -922,5 +1004,12 @@ CapDist2024Plot<-
   ylim(0, 4.5)+
   labs(title = "Capitulum Size Distribution (2024)", x = "Treatment", y = "Capitulum Size (cm)")
 #Show plot and add letters
-CapDist2024Plot+
-  geom_text(data=cldDat2024, aes(x=Trt, y=4.2, label = Letter), size = 8, color = "black")
+CapDist2024Plot<-CapDist2024Plot+
+  geom_text(data=cldDat2024, aes(x=Trt, y=4.2, label = Letter), size = 7, color = "black")
+
+#ggsave("ELS Figure S32024.svg",
+       #plot=CapDist2024Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)

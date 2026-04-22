@@ -8,6 +8,7 @@ library(ggpattern)
 library(emmeans)
 library(multcomp)
 library(ggsurvfit)
+library(svglite)
 
 #Load Data####
 
@@ -66,6 +67,9 @@ survdat2024<-mutate(survdat2024, TreatmentAbb=case_when(
   Treatment=="Rosette Damage/Early Mow/Late Mow" ~ "RD+EM+LM",
   Treatment=="Rosette Damage/Late Mow" ~ "RD+LM",
 ))
+
+#get pixel dimensions I want to use for graphics export
+dims<-dev.size("px") 
 
 #Exploratory Plots####
 ##Combined Data####
@@ -207,8 +211,16 @@ cld_combined<-cld(emmTOD_combined, Letters=letters)
 cld_combined
 
 #Add these letters to the earlier ToDPlot
-ToDPlot_combined+
+ToDPlot_combined<-ToDPlot_combined+
   geom_text(data = cld_combined, aes(x=TreatmentAbb, y=35, label = .group), size = 7, color = "black")
+
+#save this figure
+#ggsave("Figure 1.svg",
+       #plot=ToDPlot_combined,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2025####
 #To figure out which treatments affected survival, we will fit parametric survival regressions with different hazard models and compare with AIC
@@ -244,8 +256,15 @@ cld_2025<-cld(emmTOD_2025, Letters=letters)
 cld_2025
 
 #Add these letters to the earlier ToDPlot
-ToDPlot2025+
+ToDPlot2025<-ToDPlot2025+
   geom_text(data = cld_2025, aes(x=TreatmentAbb, y=40, label = .group), size = 7, color = "black")
+
+#ggsave("Figure S12025.svg",
+       #plot=ToDPlot2025,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2024####
 #To figure out which treatments affected survival, we will fit parametric survival regressions with different hazard models and compare with AIC
@@ -282,8 +301,15 @@ cld_2024<-cld(emmTOD_2024, Letters=letters)
 cld_2024
 
 #Add these letters to the earlier ToDPlot
-ToDPlot2024+
+ToDPlot2024<-ToDPlot2024+
   geom_text(data = cld_2024, aes(x=TreatmentAbb, y=35, label = .group), size = 7, color = "black")
+
+#ggsave("Figure S12024.svg",
+       #plot=ToDPlot2024,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 #Cox Proportional Hazards Model (non-parametric)####
 #We compare our above results to a non-parametric approach

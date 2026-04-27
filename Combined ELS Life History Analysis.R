@@ -567,7 +567,7 @@ MaxHt_combinedPlot<-ggplot(MaxHt_combined,aes(y=response, x=Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),  axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),  axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Maximum Height (cm)")+
   geom_text(aes(label = .group, y = asymp.UCL + 10), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -575,6 +575,13 @@ MaxHt_combinedPlot<-ggplot(MaxHt_combined,aes(y=response, x=Treatment))+
   ggtitle("Maximum Height")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 MaxHt_combinedPlot
+
+#ggsave("ELS Figure S6combined.svg",
+    #plot=MaxHt_combinedPlot,
+    #width=dims[1],
+    #height=dims[2],
+    #units="px",
+    #dpi=72)
 
 ##2025####
 #fit model and summarize
@@ -613,7 +620,7 @@ MaxHt2025Plot<-ggplot(MaxHt2025,aes(y=response, x=Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),  axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),  axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Maximum Height (cm)")+
   geom_text(aes(label = .group, y = asymp.UCL + 10), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -621,6 +628,13 @@ MaxHt2025Plot<-ggplot(MaxHt2025,aes(y=response, x=Treatment))+
   ggtitle("Maximum Height (2025)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 MaxHt2025Plot
+
+#ggsave("ELS Figure S62025.svg",
+       #plot=MaxHt2025Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2024####
 #fit model and summarize
@@ -659,7 +673,7 @@ MaxHt2024Plot<-ggplot(MaxHt2024,aes(y=response, x=Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),  axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1),  axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Maximum Height (cm)")+
   geom_text(aes(label = .group, y = asymp.UCL + 10), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -667,6 +681,13 @@ MaxHt2024Plot<-ggplot(MaxHt2024,aes(y=response, x=Treatment))+
   ggtitle("Maximum Height (2024)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 MaxHt2024Plot
+
+#ggsave("ELS Figure S62024.svg",
+    #plot=MaxHt2024Plot,
+    #width=dims[1],
+    #height=dims[2],
+    #units="px",
+    #dpi=72)
 
 #Number of Stems####
 ##Combined####
@@ -706,7 +727,7 @@ NoStems_combinedPlot<-ggplot(NoStems_combined,aes(y=rate, x=Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Number of Stems")+
   geom_text(aes(label = .group, y = asymp.UCL + .5), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -714,6 +735,13 @@ NoStems_combinedPlot<-ggplot(NoStems_combined,aes(y=rate, x=Treatment))+
   ggtitle("Number of Stems at 10 cm, at Experiment Termination")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 NoStems_combinedPlot
+
+#ggsave("ELS Figure S7combined.svg",
+    #plot=NoStems_combinedPlot,
+    #width=dims[1],
+    #height=dims[2],
+    #units="px",
+    #dpi=72)
 
 ##2025####
 #fit model and summarize
@@ -752,7 +780,7 @@ NoStems2025Plot<-ggplot(NoStems2025,aes(y=rate, x=Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Number of Stems")+
   geom_text(aes(label = .group, y = asymp.UCL + .5), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -760,6 +788,13 @@ NoStems2025Plot<-ggplot(NoStems2025,aes(y=rate, x=Treatment))+
   ggtitle("Number of Stems at 10 cm, at Experiment Termination (2025)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 NoStems2025Plot
+
+#ggsave("ELS Figure S72025.svg",
+       #plot=NoStems2025Plot,
+       #width=dims[1],
+       #height=dims[2],
+       #units="px",
+       #dpi=72)
 
 ##2024####
 #fit model and summarize
@@ -798,7 +833,7 @@ NoStems2024Plot<-ggplot(NoStems2024,aes(y=rate, x=Treatment))+
                    pattern_key_scale_factor = 0.6)+
   scale_pattern_manual(values=c("none","none","none","none", "stripe","stripe","stripe","stripe"))+
   scale_fill_manual(values = c("gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3", "gray51", "lightskyblue2", "deepskyblue3","darkolivegreen3"))+
-  theme(panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
+  theme(legend.position = "none", panel.background = element_blank(), panel.border = element_rect(color = "black",fill=NA, size=1), axis.title.y = element_text(size = 25), axis.text = element_text(size = 20), plot.title = element_text(size=30))+
   labs(x="Treatment", y="Number of Stems")+
   geom_text(aes(label = .group, y = asymp.UCL + .5), #+ number specifies how high the cld appears
             position = position_dodge(width = 0.75), size=7)+
@@ -806,6 +841,13 @@ NoStems2024Plot<-ggplot(NoStems2024,aes(y=rate, x=Treatment))+
   ggtitle("Number of Stems at 10 cm, at Experiment Termination (2024)")+
   geom_errorbar(aes(x=Treatment, ymin=asymp.LCL, ymax=asymp.UCL))
 NoStems2024Plot
+
+#ggsave("ELS Figure S72024.svg",
+    #plot=NoStems2024Plot,
+    #width=dims[1],
+    #height=dims[2],
+    #units="px",
+    #dpi=72)
 
 #Capitulum Size####
 ##Combined####

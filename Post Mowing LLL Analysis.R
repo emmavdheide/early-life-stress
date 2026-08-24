@@ -1,5 +1,4 @@
 #This file contains analysis of longest leaf length in the week immediately after mowing
-#to try to get at the mechanism by which rosette damage causes earlier death
 
 #load packages
 library(multcompView)
